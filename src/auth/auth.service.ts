@@ -1,8 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class AuthService{
-    doLogin() {
-        return 'Ola do AuthService'
-    }
+export class AuthService {
+  doLogin() {
+    return 'Ola do AuthService';
+  }
 }
