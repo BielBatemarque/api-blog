@@ -9,5 +9,6 @@ import { CommonMudule } from 'src/common/common.module';
   imports: [TypeOrmModule.forFeature([User]), CommonMudule],
   providers: [UserService],
   controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}
