@@ -10,6 +10,7 @@ export class UserController {
     private readonly configService: ConfigService,
     private readonly userService: UserService,
   ) {}
+
   @Get(':id')
   findOne(@Param('id', CustomParseIntPipe) id: number) {
     console.log(this.configService.getOrThrow('TESTE1', 'padrão'));
