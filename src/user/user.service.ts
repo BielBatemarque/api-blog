@@ -1,9 +1,15 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from './dto/create-user.dto';
 import { HashingService } from 'src/common/hashing/hashing.service';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -13,12 +19,33 @@ export class UserService {
     private readonly hashingService: HashingService,
   ) {}
 
+  async failIfEmailExists(email: string) {
+    // Email precisa ser único
+    const exists = await this.userRepository.existsBy({
+      email,
+    });
+
+    if (exists) {
+      throw new ConflictException('E-mail já existe');
+    }
+  }
+
+  async findOneByOrFail(userData: Partial<User>) {
+    const user = await this.userRepository.findOneBy(userData);
+
+    if (!user) {
+      throw new NotFoundException('Usuário não encontrado!');
+    }
+
+    return user;
+  }
+
   async create(dto: CreateUserDto) {
     // Email precisa ser único
-    const exists = await this.userRepository.exists({
-      where: {
-        email: dto.email,
-      },
+    await this.failIfEmailExists(dto.email);
+
+    const exists = await this.userRepository.existsBy({
+      email: dto.email,
     });
 
     if (exists) {
@@ -47,5 +74,23 @@ export class UserService {
 
   findBydId(id: string) {
     return this.userRepository.findOneBy({ id: id });
+  }
+
+  async update(id: string, dto: UpdateUserDto) {
+    if (!dto.name && !dto.email) {
+      throw new BadRequestException('Dados não enviados');
+    }
+
+    const user = await this.findOneByOrFail({ id });
+
+    user.name = dto.name ?? user.name;
+
+    if (dto.email && dto.email !== user.email) {
+      await this.failIfEmailExists(dto.email);
+      user.email = dto.email;
+      user.forceLogout = true;
+    }
+
+    return this.save(user);
   }
 }
