@@ -44,4 +44,8 @@ export class UserService {
   save(user: User) {
     return this.userRepository.save(user);
   }
+
+  findBydId(id: string) {
+    return this.userRepository.findOneBy({ id: id });
+  }
 }
