@@ -79,9 +79,9 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-    "title": "Titulo do post",
-    "excerpt": "Excerto",
-    "content": "Conteúdo"
+    "title": "Titulo do post 2",
+    "excerpt": "Excerto do post2",
+    "content": "Conteúdo do post 2"
 }
 
 ### Read all post Public
