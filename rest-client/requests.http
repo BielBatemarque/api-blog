@@ -20,8 +20,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email": "joao@gmail.com",
-    "password": "654321"
+    "email": "{{userEmailForTesting}}",
+    "password": "{{userPasswordForTesting}}"
 }
 
 # USER ##############################################################################
@@ -32,9 +32,9 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-    "name": "joão gomes",
-    "email": "joaoGomes@email.com",
-    "password": "123456"
+    "name": "{{userNameForTesting}}",
+    "email": "{{userEmailForTesting}}",
+    "password": "{{userPasswordForTesting}}"
 }
 
 ### Update user
