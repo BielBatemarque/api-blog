@@ -38,6 +38,6 @@ export class Post {
   updatedAt: Date;
 
   // Relacionamento Many to one muitos para um FK (para user)
-  @ManyToOne(() => User)
+  @ManyToOne(() => User, { onDelete: 'CASCADE' })
   author: User;
 }
