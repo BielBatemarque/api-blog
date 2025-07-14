@@ -79,10 +79,10 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-    "title": "Titulo do post 3",
-    "excerpt": "Excerto do post3",
-    "content": "Conteúdo do post 3",
-    "coverImageUrl": "http://localhost"
+    "title": "Titulo do post 4",
+    "excerpt": "Excerto do post 4",
+    "content": "Conteúdo do post 4",
+    "coverImageUrl": "http://localhost:8080"
 }
 
 ### Read all post Public
@@ -111,9 +111,9 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-    "title": "Titulo do post",
-    "excerpt": "Excerto",
-    "content": "Conteúdo",
+    "title": "Titulo do post alterado",
+    "excerpt": "Excerto do post alterado2",
+    "content": "Conteúdo novo do post",
     "published": true
 }
 
