@@ -7,8 +7,8 @@
 # @imagePath = {{uploadImage.response.url}}
 # @imageUrl = {{baseUrl}}{{imagePath}}
 
-@userNameForTesting = Luiz
-@userEmailForTesting = luiz@email.com
+@userNameForTesting = gabriel
+@userEmailForTesting = gabriel.batemarque@email.com
 @userPasswordForTesting = 123456
 @userNewPassowrdForTesteing = 123456
 
@@ -100,7 +100,7 @@ GET {{baseUrl}}/post/me
 Authorization: Bearer {{jwtToken}}
 
 ### Read one post owned
-# @name readOnePostOnewd
+# @name readOnePostOwned
 GET {{baseUrl}}/post/me/{{postUuid}}
 Authorization: Bearer {{jwtToken}}
 
