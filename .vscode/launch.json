@@ -18,7 +18,8 @@
       "env": {
         "TS_NODE_PROJECT": "tsconfig.json"
       },
-      "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+      "skipFiles": ["<node_internals>/**", "**/node_modules/**"],
+      "console": "integratedTerminal" // 👈 Isso envia os logs para o terminal
     }
   ]
 }
