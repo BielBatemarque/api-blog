@@ -4,8 +4,8 @@
 
 @postUuid = {{createPostOwned.response.body.id}}
 @postSlug = {{createPostOwned.response.body.slug}}
-# @imagePath = {{uploadImage.response.url}}
-# @imageUrl = {{baseUrl}}{{imagePath}}
+@imagePath = {{uploadImage.response.body.url}}
+@imageUrl = {{baseUrl}}{{imagePath}}
 
 @userNameForTesting = gabriel
 @userEmailForTesting = gabriel.batemarque@email.com
@@ -122,3 +122,25 @@ Authorization: Bearer {{jwtToken}}
 
 DELETE {{baseUrl}}/post/me/{{postUuid}}
 Authorization: Bearer {{jwtToken}}
+
+
+# UPLOAD ######################################################################
+
+### Upload Image
+# @name uploadImage
+POST {{baseUrl}}/upload
+Authorization: Bearer {{jwtToken}}
+Content-Type: multipart/form-data; boundary=----BryenFormBoundary
+
+------BryenFormBoundary
+Content-Disposition: form-data; name="file"; filename="eu.jpeg"
+Content-Type: image/jpeg
+
+< ../dev/images/eu.jpeg
+------BryenFormBoundary--
+
+### Read Image
+# @name readImage
+GET {{imageUrl}}
+
+###############################################################################
