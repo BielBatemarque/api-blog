@@ -8,7 +8,7 @@
 @imageUrl = {{baseUrl}}{{imagePath}}
 
 @userNameForTesting = gabriel
-@userEmailForTesting = gabriel.batemarque@email.com
+@userEmailForTesting = gabriel.santos@email.com
 @userPasswordForTesting = 123456
 @userNewPassowrdForTesteing = 123456
 
@@ -18,7 +18,6 @@
 # @name authLogin
 POST {{baseUrl}}/auth/login
 Content-Type: application/json
-Origin: http://localhost:517333
 
 {
     "email": "{{userEmailForTesting}}",
